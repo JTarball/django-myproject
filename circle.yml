@@ -1,0 +1,67 @@
+#####
+# Circle CI
+# 
+# For running docker images on circle ci, see: https://circleci.com/docs/docker
+# For circle.yml explanation, see: https://circleci.com/docs/manually
+# Python specific configuration, see: https://circleci.com/docs/language-python
+#####
+
+## Set the following
+# DOCKER_USER
+# DOCKER_EMAIL
+# DOCKER_PASS
+# APP_TEST_IMAGE (username/image:tag  e.g. jtarball/docker-test:latest) (comment out environment below though)
+
+# Uncomment docker push command to store test image in cloud (for CI)
+
+machine:
+    environment:
+      DOCKER_USER: "jtarball"
+      APP_TEST_IMAGE: "$DOCKER_USER/docker-$CIRCLE_PROJECT_REPONAME-test:latest"
+    services:
+        - docker
+    pre:
+      - curl -sSL https://s3.amazonaws.com/circle-downloads/install-circleci-docker.sh | bash -s -- 1.10.0
+
+dependencies:
+    pre:
+        # Remove services which will conflict
+        - sudo killall postgres
+        - docker info
+        - git clone https://github.com/docker-library/official-images.git ~/official-images
+        - npm install -g npm
+        - sudo apt-get install nodejs
+        - pip install docker-compose
+
+
+# Run django tests
+# TODO: Deployment test (build and tag / run / destroy)
+test:
+    pre:
+      # stop any previous container (stops already bind address failes)
+      - docker-compose -f config/test.yml stop
+      - docker-compose -f config/test.yml up -d
+      # Docker Images: Copy all tests into official folder and combine configs
+      - cp -r tests/* ~/official-images/test/tests
+      - docker-compose -f config/test.yml ps
+      - docker tag config_app "$APP_TEST_IMAGE"
+      # Uncomment to push test images to docker hub for staging
+      #- docker login -e "$DOCKER_EMAIL" -u "$DOCKER_USER" -p "$DOCKER_PASS"
+      #- docker push "$APP_TEST_IMAGE"
+      - ~/official-images/test/run.sh --config ~/official-images/test/config.sh --config tests/config.sh "$APP_TEST_IMAGE"
+      # TODO: Deployment test
+    override:
+      # Django Tests for Blog, Search & Accounts (Need to manually add to the end of this command)
+      # Need to save junit results inside app within docker container then copy to CIRCLE_TEST_REPORTS
+      - docker-compose -f config/test.yml run app sh -c "mkdir -p circle-junit/django && py.test --junitxml=circle-junit/django/junit.xml apps/blog apps/accounts"
+      - mkdir -p $CIRCLE_TEST_REPORTS/django
+      - mv app/circle-junit/django $CIRCLE_TEST_REPORTS/
+      - cd docs && make html coverage
+
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./deploy_docs.sh docs/build/html
+

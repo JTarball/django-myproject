@@ -1,0 +1,18 @@
+[
+  {
+    "model": "content.language",
+    "pk": 1,
+    "fields": {
+      "name": "python",
+      "slug": "python"
+    }
+  },
+  {
+    "model": "content.language",
+    "pk": 2,
+    "fields": {
+      "name": "python2",
+      "slug": "python2"
+    }
+  }
+]
