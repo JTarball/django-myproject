@@ -1,0 +1,302 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Overview &mdash; django-myproject 0.1.0 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="django-myproject 0.1.0 documentation" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> django-myproject
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <!-- Local TOC -->
+                <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Overview</a><ul>
+<li><a class="reference internal" href="#requirements">Requirements</a></li>
+<li><a class="reference internal" href="#supported-flows">Supported Flows</a></li>
+<li><a class="reference internal" href="#supported-providers">Supported Providers</a></li>
+<li><a class="reference internal" href="#features">Features</a></li>
+<li><a class="reference internal" href="#architecture-design">Architecture &amp; Design</a></li>
+</ul>
+</li>
+</ul>
+</div>
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">django-myproject</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Overview</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/overview.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Python 2.7, 3.2, 3.3, 3.4, or 3.5</li>
+<li>Django (1.4.3+)</li>
+<li>python-openid or python3-openid (depending on your Python version)</li>
+<li>requests and requests-oauthlib</li>
+</ul>
+</div>
+<div class="section" id="supported-flows">
+<h2>Supported Flows<a class="headerlink" href="#supported-flows" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Signup of both local and social accounts</li>
+<li>Connecting more than one social account to a local account</li>
+<li>Disconnecting a social account &#8211; requires setting a password if
+only the local account remains</li>
+<li>Optional instant-signup for social accounts &#8211; no questions asked</li>
+<li>E-mail address management (multiple e-mail addresses, setting a primary)</li>
+<li>Password forgotten flow</li>
+<li>E-mail address verification flow</li>
+</ul>
+</div>
+<div class="section" id="supported-providers">
+<h2>Supported Providers<a class="headerlink" href="#supported-providers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>23andMe (OAuth2)</li>
+<li>Amazon (OAuth2)</li>
+<li>AngelList (OAuth2)</li>
+<li>Asana (OAuth2)</li>
+<li>Basecamp (OAuth2)</li>
+<li>Baidu (OAuth2)</li>
+<li>Battle.net (OAuth2)</li>
+<li>Bitbucket (OAuth, OAuth2)</li>
+<li>Bitly (OAuth2)</li>
+<li>Douban (OAuth2)</li>
+<li>Dropbox (OAuth, OAuth2)</li>
+<li>Edmodo (OAuth2)</li>
+<li>Eve Online (OAuth2)</li>
+<li>Evernote (OAuth)</li>
+<li>Facebook (both OAuth2 and JS SDK)</li>
+<li>Feedly (OAuth2)</li>
+<li>Firefox Accounts (OAuth2)</li>
+<li>Flickr (OAuth)</li>
+<li>Github (OAuth2)</li>
+<li>GitLab (OAuth2)</li>
+<li>Google (OAuth2)</li>
+<li>Hubic (OAuth2)</li>
+<li>Instagram (OAuth2)</li>
+<li>LinkedIn (OAuth, OAuth2)</li>
+<li>Mail.Ru (OAuth2)</li>
+<li>Odnoklassniki (OAuth2)</li>
+<li>OpenId</li>
+<li>ORCID (OAuth2)</li>
+<li>Paypal (OAuth2)</li>
+<li>Persona</li>
+<li>Pinterest (OAuth2)</li>
+<li>Reddit (OAuth2)</li>
+<li>Shopify (OAuth2)</li>
+<li>Slack (OAuth2)</li>
+<li>SoundCloud (OAuth2)</li>
+<li>Spotify (OAuth2)</li>
+<li>Stack Exchange (OAuth2)</li>
+<li>Stripe (OAuth2)</li>
+<li>Tumblr (OAuth)</li>
+<li>Twitch (OAuth2)</li>
+<li>Twitter (OAuth)</li>
+<li>Untappd (OAuth2)</li>
+<li>Vimeo (OAuth)</li>
+<li>VK (OAuth2)</li>
+<li>Weibo (OAuth2)</li>
+<li>Weixin (OAuth2)</li>
+<li>Windows Live (OAuth2)</li>
+<li>Xing (OAuth)</li>
+</ul>
+<p>Note: OAuth/OAuth2 support is built using a common code base, making it easy to add support for additional OAuth/OAuth2 providers. More will follow soon...</p>
+</div>
+<div class="section" id="features">
+<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Supports multiple authentication schemes (e.g. login by user name,
+or by e-mail), as well as multiple strategies for account
+verification (ranging from none to e-mail verification).</li>
+<li>All access tokens are consistently stored so that you can publish
+wall updates etc.</li>
+</ul>
+</div>
+<div class="section" id="architecture-design">
+<h2>Architecture &amp; Design<a class="headerlink" href="#architecture-design" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Pluggable signup form for asking additional questions during signup.</li>
+<li>Support for connecting multiple social accounts to a Django user account.</li>
+<li>The required consumer keys and secrets for interacting with
+Facebook, Twitter and the likes are to be configured in the database
+via the Django admin using the SocialApp model.</li>
+<li>Consumer keys, tokens make use of the Django sites framework. This
+is especially helpful for larger multi-domain projects, but also
+allows for for easy switching between a development (localhost) and
+production setup without messing with your settings and database.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, James Tarball.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
